@@ -1,0 +1,26 @@
+{
+  "name": "MiniApp1",
+  "version": "1.0.0",
+  "description": "Challenge 1",
+  "scripts": {
+    "react-dev": "webpack -d --watch",
+    "server-dev": "json-server --watch data/db.json"
+  },
+  "author": "Cherri Hartigan",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-jsx-a11y": "^6.2.0",
+    "eslint-plugin-react": "^7.12.4",
+    "json-server": "^0.14.2"
+  },
+  "dependencies": {
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2"
+  }
+}

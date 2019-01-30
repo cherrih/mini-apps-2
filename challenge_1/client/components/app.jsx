@@ -6,7 +6,8 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      events: []
+      events: [],
+      value: ''
     }
   }
   componentDidMount() {
@@ -20,11 +21,27 @@ class App extends React.Component {
       })
   }
 
+  handleChange(e) {
+    this.setState({value: e.target.value});
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const url = `http://localhost:3000/events?q=${this.state.value}`;
+    fetch(url)
+      .then(resp => resp.json())
+      .then(data => {
+        this.setState({
+          events: data
+        })
+      })
+  }
+
   render() {
     return (
       <div>
         <h2>Historical Events Finder</h2>
-        <Search />
+        <Search handleChange={this.handleChange.bind(this)} value={this.state.value} handleSubmit={this.handleSubmit.bind(this)}/>
         <EventList events={this.state.events}/>
       </div>
     )

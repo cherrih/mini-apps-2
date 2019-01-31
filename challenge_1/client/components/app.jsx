@@ -7,13 +7,21 @@ class App extends React.Component {
     super(props);
     this.state = {
       events: [],
-      value: ''
+      value: '',
+      pageCount: null,
+      pageNum: 1
     }
   }
-  componentDidMount() {
-    const url = 'http://localhost:3000/events';
+
+  clickQuery(pageNum) {
+    const url = `http://localhost:3000/events?q=${this.state.value}&_page=${pageNum}`;
     fetch(url)
-      .then(resp => resp.json())
+      .then(resp => {
+        this.setState({
+          pageCount: Number(resp.headers.get('X-Total-Count') / 10)
+        })
+        return resp.json()
+      })
       .then(data => {
         this.setState({
           events: data
@@ -27,14 +35,15 @@ class App extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const url = `http://localhost:3000/events?q=${this.state.value}`;
-    fetch(url)
-      .then(resp => resp.json())
-      .then(data => {
-        this.setState({
-          events: data
-        })
-      })
+    this.clickQuery(this.state.num);
+  }
+
+  handlePageClick(data) {
+    this.clickQuery(data.selected + 1);
+  }
+
+  componentDidMount() {
+    this.clickQuery(1);
   }
 
   render() {
@@ -42,7 +51,7 @@ class App extends React.Component {
       <div>
         <h2>Historical Events Finder</h2>
         <Search handleChange={this.handleChange.bind(this)} value={this.state.value} handleSubmit={this.handleSubmit.bind(this)}/>
-        <EventList events={this.state.events}/>
+        <EventList events={this.state.events} pageCount={this.state.pageCount} handlePageClick={this.handlePageClick.bind(this)}/>
       </div>
     )
   }

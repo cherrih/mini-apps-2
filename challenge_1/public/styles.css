@@ -1,13 +1,51 @@
 body {
   font-family: sans-serif;
-  margin-left: 100px;
-  margin-top: 20px;
 }
+
+h2 {
+  padding-left: 100px;
+}
+
 #search-field {
   width: 400px;
+  margin-left: 100px;
   padding-left: 20px;
 }
 
 #search-submit {
   height: 30px;
+  margin-left: 5px;
+}
+
+.event-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 80vw;
+}
+
+.event-description {
+  max-width: 300px;
+}
+
+.event-date {
+  width: 100px;
+}
+.event-category2 {
+  width: 100px;
+}
+
+#paginate {
+  display: flex;
+}
+
+#react-paginate ul {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#react-paginate li {
+  display: inline-block;
 }

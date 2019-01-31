@@ -26,8 +26,10 @@
   },
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chart.js": "^1.1.1",
     "eslint-config-airbnb": "^17.1.0",
     "nodemon": "^1.18.9",
+    "react-chartjs": "^1.2.0",
     "request": "^2.88.0"
   }
 }

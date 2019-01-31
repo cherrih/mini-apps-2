@@ -1,3 +1,13 @@
 body {
   font-family: 'Space Mono', monospace;
 }
+
+h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.chart-container {
+  border: '1px solid black';
+  padding: '15px';
+}

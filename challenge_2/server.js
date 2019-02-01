@@ -23,7 +23,7 @@ app.get('/bitcoin', (req, res) => {
     } 
     if (!err && response.statusCode === 200) {
       const info = JSON.parse(body)
-      res.send(info.bpi);
+      res.send(info.bpi).status(200);
     }
   }
   request(options, callback);
